@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DXA.CM.Extensions.DXAResolver.Models</RootNamespace>
     <AssemblyName>DXA.CM.Extensions.DXAResolver.Models</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -58,19 +58,19 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Tridion.Common">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\_references\cm-9.1\Tridion.Common.dll</HintPath>
+      <HintPath>..\..\_references\cm-10.1\Tridion.Common.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.CoreService.Client">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\_references\cm-9.1\Tridion.ContentManager.CoreService.Client.dll</HintPath>
+      <HintPath>..\..\_references\cm-10.1\Tridion.ContentManager.CoreService.Client.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.Logging">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\_references\cm-9.1\Tridion.Logging.dll</HintPath>
+      <HintPath>..\..\_references\cm-10.1\Tridion.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.Security">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\_references\cm-9.1\Tridion.Security.dll</HintPath>
+      <HintPath>..\..\_references\cm-10.1\Tridion.Security.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -9,3 +9,4 @@ TestResults.trx
 _NuGet/
 dist/
 .vs/
+.idea/

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\ReportGenerator.5.4.4\build\netstandard2.0\ReportGenerator.props" Condition="Exists('packages\ReportGenerator.5.4.4\build\netstandard2.0\ReportGenerator.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -8,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sdl.Web.Tridion.Templates.Tests</RootNamespace>
     <AssemblyName>Sdl.Web.Tridion.Templates.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -45,31 +46,31 @@
     <Reference Include="System.XML" />
     <Reference Include="Tridion.Common">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.Common.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.Common.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ContentManager.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ContentManager.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Common">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ContentManager.Common.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ContentManager.Common.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Publishing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ContentManager.Publishing.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ContentManager.Publishing.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ContentManager.Templating">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ContentManager.Templating.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ContentManager.Templating.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ExternalContentLibrary">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ExternalContentLibrary.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ExternalContentLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Tridion.ExternalContentLibrary.V2">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\_references\cm-10.0\Tridion.ExternalContentLibrary.V2.dll</HintPath>
+      <HintPath>..\_references\cm-10.1\Tridion.ExternalContentLibrary.V2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -142,12 +143,20 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy $(MSBuildThisFileDirectory)..\_references\cm-9.0\*.* $(TargetDir) /Y</PreBuildEvent>
+    <PreBuildEvent>xcopy $(MSBuildThisFileDirectory)..\_references\cm-10.1\*.* $(TargetDir) /Y</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\ReportGenerator.5.4.4\build\netstandard2.0\ReportGenerator.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\ReportGenerator.5.4.4\build\netstandard2.0\ReportGenerator.props'))" />
+    <Error Condition="!Exists('packages\OpenCover.4.7.1221\build\OpenCover.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenCover.4.7.1221\build\OpenCover.targets'))" />
+  </Target>
+  <Import Project="packages\OpenCover.4.7.1221\build\OpenCover.targets" Condition="Exists('packages\OpenCover.4.7.1221\build\OpenCover.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
